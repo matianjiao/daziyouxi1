@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>打字游戏</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="./index.css">
+	<script type="text/javascript" src="./index.js"></script>
+	<script type="text/javascript" src="./jQuery.js"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			var games=new game();
+			games.play();
+			// 选择关
+			var select=document.getElementsByTagName("select")[0];
+			select.onchange=function(){
+				// 类似next里面
+				clearInterval(this.t);
+				for (var i = 0; i < games.spans.length; i++) {
+					document.body.removeChild(games.spans[i]);
+				};
+				games.spans=[];
+				games.scoreEle.innerHTML=0;
+				games.dieEle.innerHTML=10;
+
+				games.speed=parseInt(select[select.selectedIndex].value);
+				games.letterLen=parseInt(select[select.selectedIndex].value)+4;
+				games.aa=parseInt(select[select.selectedIndex].value);
+				games.play();
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<audio id="audio"></audio>
+	<div class="guan kaishi">
+		<div class="anniu play"></div>
+	</div>
+	<!--关卡-->
+	<div class="guan guan1">
+		<p>当前关分数 :</p>
+		<h2>总分数 :</h2>
+		<div class="anniu anniu1"></div>
+		<div class="anniu anniu2"></div>
+	</div>
+	<div class="guan guan2">
+		<p></p>
+	</div>
+	<div class="guan over">
+		<div class="anniu anniu3"></div>
+		<div class="anniu anniu4"></div>
+	</div>
+<!--生命-->
+	<div class="ming">
+		<div class="hongm"></div>
+	</div>
+
+	<div class="panel">
+		<div class="die">
+			<span>生命 : </span><span> 10 </span>
+		</div>
+		<div class="score">
+			<span>分数 : </span><span> 0 </span>
+		</div>
+
+		<select colspan="40" rowspan="60">
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+		</select>
+	</div>
+</body>
+</html>
