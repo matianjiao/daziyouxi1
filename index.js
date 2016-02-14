@@ -32,9 +32,22 @@ game.prototype={
 
 		// 按下键盘
 		this.key();
+		var kaiguan=true;
 		var audio=document.getElementById("audio");
 		audio.src="./beijing.mp3";
 		audio.play();
+		$(".music").click(function(){
+			if(kaiguan){
+				audio.pause();
+				kaiguan=false;
+				$(this).css({background:"url(./images/gmusic.png)",backgroundSize:"cover"});
+			}else{
+				audio.play();
+				kaiguan=true;
+				$(this).css({background:"url(./images/music.png)",backgroundSize:"cover"});
+			}	
+		})
+	
 		audio.onended=function(){
 			audio.play();
 		}
@@ -69,6 +82,7 @@ game.prototype={
 						$(".guan1 p").html("当前关分数 :"+that.currscore);
 						$(".guan2 p").html("第 "+that.aa+" 关");
 						$(".anniu1").click(function(){
+							flag=false;
 							$(".guan1").fadeOut(500);
 							$(".guan2").fadeIn(500);
 							setTimeout(function(){
@@ -79,6 +93,7 @@ game.prototype={
 							},2800);
 						})
 						$(".anniu2").click(function(){
+							flag=false;
 							window.location.reload();
 						})
 
@@ -142,8 +157,6 @@ game.prototype={
 						$(".anniu4").click(function(){
 							window.location.reload();
 						})
-
-
 					}
 				}
 			};
@@ -175,7 +188,7 @@ game.prototype={
 			span.innerHTML=arr[i];
 
 			var x=(100+(this.clientw-200)*Math.random());
-			var y=(-100*Math.random());
+			var y=(-200*Math.random()-100);
 			var width=30;
 			while(this.check1(this.currPos,x,width)){
 				x=(100+(this.clientw-200)*Math.random());
