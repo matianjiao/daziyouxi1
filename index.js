@@ -4,7 +4,7 @@ function game(){
 	// this.letterArr=[{url:"img/a.jpg",code:"65"},{}]
 	this.letterArr=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 	this.letterLen=5;//一次出多少
-	this.speed=10;//速度
+	this.speed=4;//速度
 	this.spans=[];//存放所有产生的字母
 	this.currArr=[];//存放页面中字母
 	this.currPos=[];
